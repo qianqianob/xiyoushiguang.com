@@ -1,0 +1,155 @@
+:root{--ink:#1f2a3a;--muted:#5b6778;--line:#e4e9f0;--bg:#fbfcfe;--card:#ffffff;--accent:#2d6cdf;--accent2:#ff8a5b;--violet:#7b5cff;--soft:#eef4ff;--foot:#f3f8ff;--ease:cubic-bezier(.2,.7,.2,1);--spring:cubic-bezier(.34,1.56,.64,1)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.75;font-size:16px;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* ---------- 顶栏 ---------- */
+header.top{position:sticky;top:0;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);z-index:20;transition:box-shadow .35s var(--ease),background .35s;view-transition-name:hdr}
+header.top.scrolled{box-shadow:0 8px 28px rgba(31,42,58,.07);background:rgba(255,255,255,.93)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;transition:height .35s var(--ease)}
+header.top.scrolled .wrap{height:56px}
+.progress{position:absolute;left:0;bottom:-1px;width:100%;height:2px;background:linear-gradient(90deg,var(--accent),var(--violet),var(--accent2));transform-origin:0 50%;scale:var(--p,0) 1;pointer-events:none}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--ink)}
+.brand:hover{text-decoration:none}
+.brand img{width:34px;height:34px;border-radius:9px;transition:transform .5s var(--spring)}
+nav a{margin-left:22px;color:var(--ink);font-size:15px;position:relative;transition:color .25s}
+nav a::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--violet));scale:0 1;transition:scale .35s var(--ease)}
+nav a:hover{text-decoration:none;color:var(--accent)}
+nav a.on{color:var(--accent);font-weight:600}nav a.on::after{scale:1 1}
+@media(hover:hover){nav a:hover::after{scale:1 1}.brand:hover img{transform:rotate(-10deg) scale(1.08)}}
+@media(max-width:720px){header.top .wrap,header.top.scrolled .wrap{height:auto;flex-wrap:wrap;padding:10px 20px}nav{width:100%;display:flex;flex-wrap:wrap;gap:6px 0;margin-top:6px}nav a{margin:0 16px 0 0;font-size:14px}}
+
+/* ---------- 版式 ---------- */
+.hero{padding:76px 0 64px;background:linear-gradient(180deg,#eef5ff 0%,#fbfcfe 100%)}
+.hero h1{font-size:42px;line-height:1.25;margin:0 0 14px}.hero p.lead{font-size:19px;color:var(--muted);max-width:640px;margin:0 0 26px}
+.page-head{padding:64px 0 52px}.page-head h1{font-size:36px}
+@media(max-width:560px){.hero h1{font-size:32px}.page-head h1{font-size:30px}.hero p.lead{font-size:17px}}
+.btn{display:inline-block;position:relative;overflow:hidden;padding:11px 20px;border-radius:10px;background:var(--accent);color:#fff;font-weight:600;transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s}
+.btn.ghost{background:#fff;color:var(--accent);border:1px solid var(--accent);margin-left:10px}
+.btn:hover{text-decoration:none}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.5) 50%,transparent 70%);translate:-130% 0;pointer-events:none}
+@media(hover:hover){.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(45,108,223,.28)}.btn.ghost:hover{background:#f4f8ff}.btn:hover::after{translate:130% 0;transition:translate .8s var(--ease)}}
+section{padding:56px 0}section.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+h2{font-size:28px;margin:0 0 8px}h3{font-size:19px;margin:22px 0 8px}
+.sub{color:var(--muted);margin:0 0 24px}
+.grid{display:grid;gap:18px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:820px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{position:relative;background:radial-gradient(320px circle at var(--mx,-999px) var(--my,-999px),rgba(45,108,223,.09),transparent 62%),var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s}
+@media(hover:hover){.card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(45,108,223,.12);border-color:#cddcf5}}
+.card h3{margin-top:0}.card p{margin:6px 0 0;color:var(--muted)}
+.card .ph+h3{margin-top:16px}
+.stat{font-size:38px;font-weight:700;color:var(--accent);line-height:1.1;font-variant-numeric:tabular-nums}.stat small{display:block;font-size:14px;color:var(--muted);font-weight:400;margin-top:6px}
+.stat .num{background:linear-gradient(90deg,var(--accent),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}@media(max-width:820px){.split{grid-template-columns:1fr}}
+.shot{width:100%;max-width:380px;border-radius:22px;box-shadow:0 22px 56px rgba(31,42,58,.2);display:block;margin:0 auto}
+.img{width:100%;border-radius:14px;display:block}
+.ph{overflow:hidden;border-radius:14px;transform:translateZ(0)}
+.ph .img{border-radius:0;transition:scale .8s var(--ease)}
+@media(hover:hover){.card:hover .ph .img{scale:1.06}}
+table.info{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+table.info th,table.info td{padding:11px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;transition:background .25s}
+table.info th{width:180px;background:var(--soft);font-weight:600}table.info tr:last-child th,table.info tr:last-child td{border-bottom:0}
+@media(hover:hover){table.info tr:hover td{background:#f8fbff}}
+@media(max-width:560px){table.info th{width:104px}}
+.timeline{list-style:none;padding:0;margin:0;position:relative}
+.timeline::before{content:"";position:absolute;left:0;top:8px;bottom:10px;width:2px;border-radius:2px;background:linear-gradient(180deg,var(--accent),var(--violet) 70%,var(--accent2));transform-origin:50% 0;transition:scale 1.8s var(--ease)}
+.timeline li{padding:0 0 20px 24px;position:relative}
+.timeline li::before{content:"";position:absolute;left:-5px;top:9px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px #e3ecff;transition:scale .55s var(--spring) calc(var(--d,0s) + .25s)}
+.timeline li.next::before{background:var(--accent2);box-shadow:0 0 0 4px #ffe9df}
+.timeline b{display:block}.timeline span{color:var(--muted)}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:10px;transition:box-shadow .3s var(--ease),border-color .3s}
+.faq details[open]{border-color:#cddcf5;box-shadow:0 10px 26px rgba(45,108,223,.08)}
+.faq summary{cursor:pointer;font-weight:600;list-style:none;position:relative;padding-right:30px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:0;top:50%;translate:0 -52%;font-size:24px;line-height:1;font-weight:400;color:var(--accent);transition:rotate .35s var(--ease)}
+.faq details[open] summary::after{rotate:45deg}
+.faq p{margin:8px 0 0;color:var(--muted)}
+.doc{max-width:820px}.doc h2{margin-top:36px;font-size:22px}.doc p,.doc li{color:#2b3644}.doc .meta{color:var(--muted);font-size:14px}
+.note{background:var(--soft);border-radius:12px;padding:14px 18px;color:#2b3644}
+.en{font-family:-apple-system,"Helvetica Neue",Arial,sans-serif}
+ul.perks li{margin-bottom:6px}
+
+/* ---------- 页脚：云边 ---------- */
+footer{position:relative;padding:44px 0 44px;color:var(--muted);font-size:14px;background:var(--foot);margin-top:40px}
+footer::before{content:"";position:absolute;left:0;right:0;top:-38px;height:40px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40'%3E%3Cpath fill='%23f3f8ff' d='M0 40V28C10 22 24 14 40 20C50 4 74 0 90 14C104 4 124 6 132 22C146 10 166 10 176 22C190 8 214 10 224 24C230 22 236 24 240 28V40Z'/%3E%3C/svg%3E") repeat-x 0 0/240px 40px;pointer-events:none}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:24px}@media(max-width:720px){footer .cols{grid-template-columns:1fr}}
+footer h4{margin:0 0 8px;color:var(--ink);font-size:15px}footer a{color:var(--muted);display:block;transition:color .25s,translate .25s var(--ease)}
+@media(hover:hover){footer .cols>div:not(:first-child) a:hover{color:var(--accent);translate:4px 0;text-decoration:none}}
+footer .copy{margin-top:26px;padding-top:16px;border-top:1px solid #dfe8f5;font-size:13px}
+
+/* ---------- 回到顶部 ---------- */
+.totop{position:fixed;right:20px;bottom:22px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--accent);font-size:20px;font-weight:700;box-shadow:0 10px 28px rgba(45,108,223,.22);opacity:0;scale:.6;pointer-events:none;transition:opacity .35s var(--ease),scale .45s var(--spring);z-index:30}
+.totop.show{opacity:1;scale:1;pointer-events:auto}
+.totop:hover{text-decoration:none}
+
+/* ---------- 天空：云、星、太阳光晕、飘字 ---------- */
+.sky{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(180deg,#d6e8ff 0%,#e9f2ff 46%,var(--bg) 100%)}
+.sky-layer{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.sky-layer .depth{position:absolute;inset:0;will-change:translate}
+.cl{position:absolute;top:var(--y);left:var(--x);width:var(--w);height:auto;opacity:var(--o);overflow:visible}
+.sun{position:absolute;right:-120px;top:-170px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(255,252,240,.95) 0%,rgba(255,236,196,.6) 22%,rgba(255,226,180,.22) 44%,rgba(255,226,180,0) 66%)}
+.tw{position:absolute;left:var(--x);top:var(--y);font-size:var(--s);line-height:1;color:#ffffff;text-shadow:0 0 10px rgba(255,214,140,.9);opacity:.7}
+.zi{position:absolute;bottom:-70px;left:var(--x);font-family:"Kaiti SC","STKaiti","KaiTi","BiauKai",serif;font-size:var(--s);color:var(--c);opacity:0;will-change:transform,opacity}
+.sky .wrap{position:relative}
+.grad{background:linear-gradient(90deg,var(--accent),var(--violet),var(--accent2),var(--violet),var(--accent));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.shot-wrap{position:relative;max-width:380px;margin:0 auto;perspective:1100px;isolation:isolate}
+.shot-wrap .glow{position:absolute;inset:6% 4%;border-radius:48px;background:radial-gradient(closest-side,rgba(123,92,255,.38),rgba(45,108,223,.2),transparent);filter:blur(30px);z-index:-1}
+.shot.tilt{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s var(--ease)}
+
+/* 写信区：纸飞机 */
+.mail{position:relative;overflow:hidden}
+.mail-fx{position:absolute;right:3%;top:50%;translate:0 -50%;width:330px;height:140px;pointer-events:none}
+.mail-fx .trail{position:absolute;inset:0;width:100%;height:100%}
+.mail-fx .plane{position:absolute;right:0;top:-6px;width:58px;height:58px}
+@media(max-width:860px){.mail-fx{display:none}}
+
+/* ---------- 动效（仅在系统未要求「减少动态效果」时启用） ---------- */
+@media (prefers-reduced-motion:no-preference){
+  @view-transition{navigation:auto}
+  ::view-transition-old(root){animation:vt-out .22s var(--ease) both}
+  ::view-transition-new(root){animation:vt-in .5s var(--ease) both}
+
+  .cl{left:0;translate:calc(-1 * var(--w) - 40px) 0;animation:drift var(--t) linear var(--dl) infinite}
+  .sun{animation:breathe 9s ease-in-out infinite}
+  .tw{animation:twinkle var(--t,4s) ease-in-out var(--dl,0s) infinite}
+  .zi{animation:rise var(--t) linear var(--dl) infinite}
+  .grad{animation:flow 9s linear infinite}
+  .float{animation:bob 6.5s ease-in-out infinite}
+  .shot-wrap .glow{animation:breathe 6s ease-in-out infinite}
+  .hero .btn:not(.ghost)::after{animation:shine 5s ease-in-out 1.6s infinite}
+  .kb .img{animation:kb 26s ease-in-out infinite alternate}
+  footer::before{animation:edge 60s linear infinite}
+  .mail-fx .trail path{stroke-dasharray:7 9;animation:march 1.6s linear infinite}
+  .mail-fx .plane{animation:fly 7s ease-in-out infinite}
+  .timeline li.next::after{content:"";position:absolute;left:-5px;top:9px;width:12px;height:12px;border-radius:50%;border:2px solid var(--accent2);box-sizing:border-box;animation:ping 2.4s ease-out infinite}
+
+  .mo .enter{animation:enter 1s var(--ease) var(--d,0s) both}
+  .mo .rv{opacity:0;translate:0 28px;transition:opacity .85s var(--ease) var(--d,0s),translate .85s var(--ease) var(--d,0s)}
+  .mo .rv.zoom{translate:none;scale:.94;transition:opacity .9s var(--ease) var(--d,0s),scale .9s var(--ease) var(--d,0s)}
+  .mo .card.rv{transition:opacity .85s var(--ease) var(--d,0s),translate .85s var(--ease) var(--d,0s),transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s}
+  .mo .rv.in{opacity:1;translate:none;scale:none}
+  .mo .timeline:not(.in)::before{scale:1 0}
+  .mo .timeline li.rv:not(.in)::before{scale:0}
+
+  @supports (interpolate-size:allow-keywords){
+    :root{interpolate-size:allow-keywords}
+    .faq details::details-content{height:0;overflow:clip;transition:height .42s var(--ease),content-visibility .42s allow-discrete}
+    .faq details[open]::details-content{height:auto}
+  }
+}
+@keyframes vt-out{to{opacity:0}}
+@keyframes vt-in{from{opacity:0;translate:0 12px}}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(calc(100vw + var(--w) + 80px))}}
+@keyframes breathe{50%{scale:1.08;opacity:.85}}
+@keyframes twinkle{0%,100%{opacity:.15;scale:.6}50%{opacity:.95;scale:1.1}}
+@keyframes rise{0%{transform:translate3d(0,0,0) rotate(-8deg);opacity:0}12%{opacity:1}82%{opacity:1}100%{transform:translate3d(var(--sx),calc(-1 * var(--h,520px)),0) rotate(8deg);opacity:0}}
+@keyframes flow{to{background-position:300% 0}}
+@keyframes bob{50%{translate:0 -14px}}
+@keyframes shine{0%,72%{translate:-130% 0}100%{translate:130% 0}}
+@keyframes kb{from{scale:1;translate:0 0}to{scale:1.08;translate:-2% -1.5%}}
+@keyframes edge{to{background-position:240px 0}}
+@keyframes march{to{stroke-dashoffset:-32}}
+@keyframes fly{0%,100%{translate:0 0;rotate:0deg}25%{translate:-14px 10px;rotate:-6deg}50%{translate:4px -8px;rotate:4deg}75%{translate:10px 6px;rotate:-2deg}}
+@keyframes ping{0%{scale:1;opacity:.9}100%{scale:2.6;opacity:0}}
+@keyframes enter{from{opacity:0;translate:0 26px}to{opacity:1;translate:none}}
